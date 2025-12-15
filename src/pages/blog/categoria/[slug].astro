@@ -1,6 +1,9 @@
 ---
+import PostCard from '@/components/blog/PostCard.astro'
+import Layout from '@/layouts/Layout.astro'
 import {CategoriesSlugSchema, CategorySchema, PostsSchema} from '@/types/index'
 
+// 1ra consulta necesaria para el routing
 export async function getStaticPaths() {
     const res = await fetch(`${import.meta.env.API_URL}/categories?_fields=slug`)
     const json = await res.json()
@@ -27,5 +30,10 @@ const posts = PostsSchema.parse(postJson)
 
 ---
 
-<h1>iuiui</h1>
-
+<Layout
+    title={`Posts de la Categoria: ${category.name}`}
+    subtitle={`Posts de la Categoria: ${category.name}`}
+    bgImage={posts[0].featured_images.full.url}
+>
+    {posts.map(post => <PostCard post={post} />)}
+</Layout>
