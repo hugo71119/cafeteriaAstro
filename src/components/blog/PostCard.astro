@@ -24,7 +24,7 @@ import PostCategories from "./PostCategories.astro";
             })} </span>
         </p>
 
-        {post.category_details.map(cat => <PostCategories name={cat.name}/>)}
+        {post.category_details.map(cat => <PostCategories name={cat.name} slug={cat.slug} />)}
 
         <div set:html={post.content.rendered} class="line-clamp-2"></div>
     </div>

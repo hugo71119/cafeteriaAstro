@@ -32,7 +32,7 @@ import { PostSchema } from "@/types";
             })} </span>
         </p>
 
-        {category_details.map(cat => <PostCategories name={cat.name}/>)}
+        {category_details.map(cat => <PostCategories name={cat.name} slug={cat.slug} />)}
 
         <img src={featured_images.full.url} alt={title.rendered} width={featured_images.full.width} height={featured_images.full.height} class="w-full ">
 
