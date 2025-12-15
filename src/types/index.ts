@@ -45,7 +45,8 @@ export const ProcessPageSchema = BaseWPSchema.extend({
     }).catchall(processSchema) // catchall sirve para agregar las nuevas propiedades del ACF
 })
 
-const CategorySchema = z.object({
+export const CategorySchema = z.object({
+    id: z.number(),
     name: z.string(),
     slug: z.string()
 })
