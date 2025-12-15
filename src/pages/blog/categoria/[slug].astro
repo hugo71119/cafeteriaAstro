@@ -1,5 +1,5 @@
 ---
-import {CategoriesSlugSchema, CategorySchema} from '@/types/index'
+import {CategoriesSlugSchema, CategorySchema, PostsSchema} from '@/types/index'
 
 export async function getStaticPaths() {
     const res = await fetch(`${import.meta.env.API_URL}/categories?_fields=slug`)
@@ -17,7 +17,14 @@ const catRes = await fetch(catUrl)
 const catJson = await catRes.json()
 const category = CategorySchema.parse(catJson[0])
 
-console.log(category);
+
+
+// Traer informacion de los post en base al slug obtenido previamiente
+const postUrl = `${import.meta.env.API_URL}/posts?categories=${category.id}`
+const postRes = await fetch(postUrl)
+const postJson = await postRes.json()
+const posts = PostsSchema.parse(postJson) 
+
 ---
 
 <h1>iuiui</h1>
