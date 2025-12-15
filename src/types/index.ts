@@ -50,6 +50,10 @@ const CategorySchema = z.object({
     slug: z.string()
 })
 
+export const CategoriesSlugSchema = z.array(CategorySchema.pick({
+    slug:true
+}))
+
 const CategorySchemaArray = z.array(CategorySchema)
 
 
