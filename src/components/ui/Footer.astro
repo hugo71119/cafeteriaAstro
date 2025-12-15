@@ -1,0 +1,26 @@
+---
+import FooterBox from "./FooterBox.astro";
+
+
+---
+
+
+<footer class="bg-coffe-900 pt-20">
+    <div class="max-w-7xl mx-auto mt-10 grid grid-cols-1 lg:grid-cols-3 gap-10 px-5">
+        <FooterBox heading="Ubicación">
+            <p>Coffe Street 39</p>
+            <p>Londres, UK</p>
+        </FooterBox>
+        <FooterBox heading="Resevación">
+            <p>Tel. 3890-4278</p>
+            <a href="tel +3890-4278">Llamar</a>
+        </FooterBox>
+        <FooterBox heading="Horario">
+            <p>Lunes a Viernes: 8:00am - 8:00pm</p>
+            <p>Sábado y Domingo: 9:00am - 6:00pm</p>
+        </FooterBox>
+    </div>
+    <p
+        class="py-10 text-center text-white text-sm"
+    >Todos los derechos reservados. La Cafeteria1939. &copy; {new Date().getFullYear()}</p>
+</footer>

@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+    --default-font-family: "Outfit", sans-serif;
+    --font-mono: "PT Sans", sans-serif;
+    --color-coffe-50: #fcf8ee;
+    --color-coffe-100: #f5ebd0;
+    --color-coffe-200: #ead59d;
+    --color-coffe-300: #dfbb6a;
+    --color-coffe-400: #d7a648;
+    --color-coffe-500: #ce8a32;
+    --color-coffe-600: #b66b29;
+    --color-coffe-700: #975026;
+    --color-coffe-800: #7c3f24;
+    --color-coffe-900: #5e311e;
+    --color-coffe-950: #3a1a0e;
+
+
+}
+
+@utility coffe-icon {
+    content: '';
+    background-image: url("../assets/coffee.svg");
+    background-size: 6rem;
+    background-position: center;
+    width: 6rem;
+    height: 6rem;
+    display: block;
+    margin-inline: auto;
+}
