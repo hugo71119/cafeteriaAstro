@@ -9,13 +9,35 @@ const { gallery } = Astro.props
 
 ---
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+<div id="gallery" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
     {gallery.map(image => (
-        <img 
-            src={image.large.url} 
-            alt="Galeria de imagenes"
-            width={image.large.width}
-            height={image.large.width}
-        />
+        <a 
+            href={image.full.url}
+            data-pswp-width={image.full.width}
+            data-pswp-height={image.full.height}
+            target="_blank"
+        >
+            <img 
+                src={image.large.url} 
+                alt="Galeria de imagenes"
+                width={image.large.width}
+                height={image.large.width}
+            />
+        </a>
     ))}
 </div>
+
+
+<script>
+    import PhotoSwipeLightbox from 'photoswipe/lightbox'
+    import 'photoswipe/style.css'
+
+    const lightbox = new PhotoSwipeLightbox({
+        gallery: '#gallery',
+        children: 'a',
+        pswpModule: () => import('photoswipe')
+    })
+
+    lightbox.init()
+
+</script>
