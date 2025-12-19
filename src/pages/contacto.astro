@@ -1,0 +1,20 @@
+---
+    import Layout from "@/layouts/Layout.astro";
+    import { BaseWPSchema } from "@/types/index";
+
+    const url = `${import.meta.env.API_URL}/pages?slug=contacto`;
+    const response = await fetch(url);
+    const json = await response.json();
+    const data = BaseWPSchema.parse(json[0])
+    console.log(data);
+    
+---
+
+<Layout
+    title={data.title.rendered}
+    subtitle={data.acf.subtitle}
+    bgImage={data.featured_images.large.url}
+>
+    <div class="text-xl space-y-3 mt-10 lg:mt-0" set:html={data.content.rendered}></div>
+</Layout>
+
