@@ -1,0 +1,34 @@
+---
+    import ProductsMenu from "@/components/menu/ProductsMenu.astro";
+    import Layout from "@/layouts/Layout.astro";
+    import { BaseWPSchema } from "@/types/index";
+
+    const url = `${import.meta.env.API_URL}/pages?slug=menu`;
+    const response = await fetch(url);
+    const json = await response.json();
+    const data = BaseWPSchema.parse(json[0])
+    
+---
+
+<Layout
+    title={data.title.rendered}
+    subtitle={data.acf.subtitle}
+    bgImage={data.featured_images.large.url}
+>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <img 
+            src={data.featured_images.medium_large.url}
+            alt={`Imagen de ${data.title.rendered}`}
+            width={data.featured_images.medium_large.width}
+            height={data.featured_images.medium_large.height}
+        />
+
+        <div class="text-xl space-y-3 mt-10 lg:mt-0" set:html={data.content.rendered}></div>
+    </div>
+
+    <ProductsMenu
+        slot='after-main-content'
+    />
+
+</Layout>
+
