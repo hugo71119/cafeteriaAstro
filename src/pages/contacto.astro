@@ -1,12 +1,12 @@
 ---
-    import Layout from "@/layouts/Layout.astro";
-    import { BaseWPSchema } from "@/types/index";
+    import LocationMap from "@/components/contact/LocationMap.astro";
+import Layout from "@/layouts/Layout.astro";
+    import { ContactPageSchema } from "@/types/index";
 
     const url = `${import.meta.env.API_URL}/pages?slug=contacto`;
     const response = await fetch(url);
     const json = await response.json();
-    const data = BaseWPSchema.parse(json[0])
-    console.log(data);
+    const data = ContactPageSchema.parse(json[0])
     
 ---
 
@@ -16,5 +16,12 @@
     bgImage={data.featured_images.large.url}
 >
     <div class="text-xl space-y-3 mt-10 lg:mt-0" set:html={data.content.rendered}></div>
+
+    <div>
+        <LocationMap
+            location={data.acf.location}
+        />
+
+    </div>
 </Layout>
 

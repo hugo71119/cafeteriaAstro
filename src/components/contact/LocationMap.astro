@@ -1,0 +1,12 @@
+---
+import type {Location} from '@/types'
+
+interface Props {
+    location: Location
+}
+
+const { location } = Astro.props
+
+---
+
+<h1>{location.lat}</h1>
